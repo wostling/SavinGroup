@@ -32,4 +32,4 @@ for char in range(length):
 df.insert(2*i, "Y Average", y_average_list, True)
 df.insert(2*i, "X Average", x_average_list, True)
 df.to_csv(filename)
-        s
+        

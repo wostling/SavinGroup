@@ -1,28 +1,35 @@
+column_list = [2,6]
+
+
+file_list = ["C:/Users/willi/Desktop/Savin Group/column select from multiple files/24_07_15_11_48_37.dat",
+            "C:/Users/willi/Desktop/Savin Group/column select from multiple files/24_07_15_11_49_03.dat",
+            "C:/Users/willi/Desktop/Savin Group/column select from multiple files/24_07_15_11_49_13.dat"]
+
+output_filename = ""
+
 import pandas as pd
-def combine_files(file_list, column_list):
-    df = pd.DataFrame()
-    i=0
-    temp_dataframe = pd.DataFrame()
-    for file in file_list:
-        i+=1
-        data = pd.read_csv(file, sep='\t', 
-                           header=None,
-                           names = ['a_' + str(i), 'b_' + str(i), 'c_' + str(i), 'd_' + str(i), 
-                           'e_' + str(i), 'f_' + str(i), 'g_' + str(i), 'h_' + str(i)])
-        for column in column_list:
-            column_slice = data.iloc[:, column-1:column:1]
-            df = pd.concat([df, column_slice],axis=1)
-    length = df.shape[0]
-    i=3
-    xs = df.iloc[:, 1:((i*2) - 1):2]
-    ys = df.iloc[:, 2:(i*2):2]
-    x_average_list = []
-    y_average_list = []
-    for char in range(length):
-        x_average_list.append(sum(xs.iloc[char]) / float(len(xs.iloc[char])))
-        y_average_list.append(sum(ys.iloc[char]) / float(len(ys.iloc[char])))
-    df.insert(2*i, "Y Average", y_average_list, True)
-    df.insert(2*i, "X Average", x_average_list, True)
-    return df
-        
-        
+df = pd.DataFrame()
+i=0
+temp_dataframe = pd.DataFrame()
+for file in file_list:
+    i+=1
+    data = pd.read_csv(file, sep='\t', 
+                        header=None,
+                        names = ['a_' + str(i), 'b_' + str(i), 'c_' + str(i), 'd_' + str(i), 
+                        'e_' + str(i), 'f_' + str(i), 'g_' + str(i), 'h_' + str(i)])
+    for column in column_list:
+        column_slice = data.iloc[:, column-1:column:1]
+        df = pd.concat([df, column_slice],axis=1)
+length = df.shape[0]
+i=3
+xs = df.iloc[:, 1:((i*2) - 1):2]
+ys = df.iloc[:, 2:(i*2):2]
+x_average_list = []
+y_average_list = []
+for char in range(length):
+    x_average_list.append(sum(xs.iloc[char]) / float(len(xs.iloc[char])))
+    y_average_list.append(sum(ys.iloc[char]) / float(len(ys.iloc[char])))
+df.insert(2*i, "Y Average", y_average_list, True)
+df.insert(2*i, "X Average", x_average_list, True)
+df.to_csv(filename)
+        s

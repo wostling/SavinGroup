@@ -21,8 +21,8 @@ def combine_files(file_list, column_list):
     for char in range(length):
         x_average_list.append(sum(xs.iloc[char]) / float(len(xs.iloc[char])))
         y_average_list.append(sum(ys.iloc[char]) / float(len(ys.iloc[char])))
-    df.insert(2*i, "X Average", x_average_list, True)
     df.insert(2*i, "Y Average", y_average_list, True)
+    df.insert(2*i, "X Average", x_average_list, True)
     return df
         
         

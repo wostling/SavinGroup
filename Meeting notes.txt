@@ -1,0 +1,2 @@
+Meeting notes:
+- Internal energy of less than 1600K

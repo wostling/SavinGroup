@@ -1,0 +1,3 @@
+Sum kinetic  rate coefficient vs thermal rate coefficient and see values
+re-convolve distribution to understand error
+re-fit
